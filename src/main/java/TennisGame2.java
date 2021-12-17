@@ -1,10 +1,10 @@
 
 public class TennisGame2 implements TennisGame
 {
-    public int p1Point = 0;
-    public int p2Point = 0;
-    private String player1Name;
-    private String player2Name;
+    private int p1Point = 0;
+    private int p2Point = 0;
+    private final String player1Name;
+    private final String player2Name;
 
     public TennisGame2(String player1Name, String player2Name) {
         this.player1Name = player1Name;
@@ -12,7 +12,7 @@ public class TennisGame2 implements TennisGame
     }
 
     public String getScore(){
-        String score = "";
+        String score;
         if (p1Point == p2Point)
             score = equalScore();
 
@@ -59,19 +59,10 @@ public class TennisGame2 implements TennisGame
         return minusResult >= 2 ? "Win for player1": "Win for player2";
     }
 
-
-    public void P1Score(){
-        p1Point++;
-    }
-    
-    public void P2Score(){
-        p2Point++;
-    }
-
     public void wonPoint(String player) {
-        if (player == "player1")
-            P1Score();
+        if (player.equals(this.player1Name))
+            p1Point++;
         else
-            P2Score();
+            p2Point++;
     }
 }
